@@ -13,5 +13,4 @@ function findMinInSortedRotated(x) {
 }
 
 var testArr = ["Gigli","Jay is cool","Mavis","Phoebe","Thurber","Anna","Celeste","Elon"];
-
 console.log(findMinInSortedRotated(testArr));
