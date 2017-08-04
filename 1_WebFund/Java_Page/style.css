@@ -1,0 +1,77 @@
+/*CSS reset settings here*/
+*{
+ margin: 0px;
+ padding: 0px;
+}
+
+h1, h2, p, li{
+    color:#c5e0f7;
+}
+
+span{
+    color:#729bf2;
+}
+
+a{
+    color:#52dee5;
+}
+
+li {
+    margin-left: 15px;
+}
+
+p, h2 {
+    margin-bottom: 15px;
+}
+
+#footer p{
+    margin-bottom:0;
+}
+
+#header, #footer, #nav, #text_content{
+border-radius:20px;
+
+}
+
+#wrapper{
+     width: 970px;
+     background-color: #21325d;
+     padding:20px;
+}
+
+#header{
+     background-color: #d72638;
+     padding:20px;
+     margin-bottom: 20px;
+}
+
+#content{
+width: 970px;
+
+}
+
+#footer{
+    background-color: #5c6672;
+    padding:20px;
+    margin-top: 20px;
+}
+
+#nav{
+     background-color: #087e8b;
+     width:150px;
+     display:inline-block;
+     vertical-align: top;
+     padding:20px;
+     margin-right: 20px;
+ }
+
+#text_content{
+    background-color: #0c1821;
+    width:715px;
+    display:inline-block;
+    padding:20px;
+}
+
+.inner_links{
+    list-style: none;
+}
