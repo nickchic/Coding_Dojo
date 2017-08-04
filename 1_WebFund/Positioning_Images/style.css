@@ -1,0 +1,67 @@
+/*CSS reset settings here*/
+*{
+ margin: 0px;
+ padding: 0px;
+}
+
+#wrapper{
+width:950px;
+padding:50px;
+background-color: #d3d3ae;
+
+
+}
+
+#img_holder{
+margin:10px 50px;
+
+}
+
+#title img{
+width:50px;
+display:inline;
+margin: 0px 10px;
+}
+
+#title h1{
+display:inline;
+
+}
+
+#title {
+margin: auto;
+width:450px;
+
+}
+
+
+
+.blue_pic {
+    width:150px;
+    height:150px;
+    display:inline-block;
+    border: 2px solid #000000;
+    background-color: #89b2ed;
+}
+
+.red_pic {
+    width:150px;
+    height:150px;
+    display:inline-block;
+    border: 2px solid #000000;
+    background-color: #ed6472;
+}
+
+.blue_pic img{
+    width:120px;
+    height:120px;
+    margin:15px;
+
+}
+
+.red_pic img{
+    width:120px;
+    height:120px;
+    margin:15px;
+
+}
