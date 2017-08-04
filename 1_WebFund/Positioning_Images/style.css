@@ -29,19 +29,17 @@ margin: auto;
 width:450px;
 }
 
-.blue_pic {
+.blue_pic, .red_pic {
     width:150px;
     height:150px;
     display:inline-block;
     border: 2px solid #000000;
-    background-color: #89b2ed;
 }
 
+.blue_pic {
+    background-color: #89b2ed;
+}
 .red_pic {
-    width:150px;
-    height:150px;
-    display:inline-block;
-    border: 2px solid #000000;
     background-color: #ed6472;
 }
 
