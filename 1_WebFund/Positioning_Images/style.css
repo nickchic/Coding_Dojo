@@ -8,13 +8,10 @@
 width:950px;
 padding:50px;
 background-color: #d3d3ae;
-
-
 }
 
 #img_holder{
 margin:10px 50px;
-
 }
 
 #title img{
@@ -25,16 +22,12 @@ margin: 0px 10px;
 
 #title h1{
 display:inline;
-
 }
 
 #title {
 margin: auto;
 width:450px;
-
 }
-
-
 
 .blue_pic {
     width:150px;
@@ -52,16 +45,8 @@ width:450px;
     background-color: #ed6472;
 }
 
-.blue_pic img{
+.blue_pic img, .red_pic img{
     width:120px;
     height:120px;
     margin:15px;
-
-}
-
-.red_pic img{
-    width:120px;
-    height:120px;
-    margin:15px;
-
 }
