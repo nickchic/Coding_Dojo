@@ -2,3 +2,217 @@
     margin:0;
     padding:0;
 }
+
+#header img, #header h1, #left, #right, #footer img, #footer div, #subheader img, #subheader a, #contact, #contact img, #contact div
+{
+    display: inline-block;
+}
+
+body{
+    background-color: #eeeeee;
+    font-family: Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color:#2ec6dd;
+}
+
+#wrapper{
+    background-color: white;
+    margin:auto;
+    width: 980px;
+}
+
+#header img{
+    width:88px;
+    position: relative;
+    top:28px;
+}
+
+#header h1{
+    color:#424242;
+    font-weight: lighter;
+    font-size: 48px;
+}
+#header h1 span{
+    color:#0b5390;
+}
+
+#header h2{
+    height:49px;
+    color:white;
+    background:linear-gradient(#06508d,#5384aa,#06508d);
+    padding-left: 20px;
+    padding-top: 13px;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+#content{
+    width:980px;
+    background:linear-gradient(#e4e4e4,white 20%);
+}
+
+#left{
+    width:200px;
+    vertical-align: top;
+    margin:0 45px 0 7px;
+}
+
+#right, #footer{
+    width:700px;
+
+}
+
+#left h4{
+    font-weight: bold;
+    font-size:17px;
+    margin:25px 0 13px 0;
+}
+
+#left p{
+    font-weight: bold;
+    font-size:14px;
+    margin-bottom: 20px;
+}
+
+#left h4 span{
+    color:red;
+}
+
+#left p span{
+    color:#1e85da;
+}
+
+#buttons{
+    text-align: center;
+    padding-bottom:20px;
+    border-bottom: 1px solid black;
+    margin-bottom: 25px;
+}
+#buttons span{
+    display: block;
+    width:180px;
+    margin: 0 auto 10px auto;
+    background-color: grey;
+    padding:10px;
+    color:white;
+    border-radius: 7px;
+    box-shadow: 2px 2px 3px #727272;
+}
+#watch_button{
+    background:linear-gradient(#6398c0,#2b6a9e);
+}
+#more_button{
+    background:linear-gradient(#eaaa5a,#ed7606);
+}
+
+
+#code_img{
+    background-image: url(./images/ad_background.png);
+    width:200px;
+    height:300px;
+    text-align: center;
+}
+#code_img img{
+    width:75px;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+#code_img p{
+    color:white;
+    font-size: 24px;
+    font-weight: normal;
+    padding-top:20px;
+}
+#code_img span{
+    color:white;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 5px 20px;
+    background:linear-gradient(#76d0de,#3ac8de,#76d0de);
+    border-radius: 5px;
+    margin-top:20px;
+}
+
+#subheader #contact img{
+    width:45px;
+}
+#subheader{
+    margin-top:5px;
+}
+
+#subheader img{
+    vertical-align: top;
+    width:20px;
+}
+
+#subheader a{
+    vertical-align: top;
+    color:#2a699e;
+    position: relative;
+    top:5px;
+}
+#contact{
+    font-size: 11px;
+    color:grey;
+    text-align: right;
+    margin-left:415px;
+}
+#contact img{
+    position: relative;
+    top:5px;
+    right:5px;
+}
+
+#phone_number{
+    color:#00acda;
+    font-size: 27px;
+    font-weight: bold;
+}
+#right_content{
+    margin-top:7px;
+    padding-top:7px;
+    border-top: 1px solid #393939;
+}
+
+#right_content img{
+    width:266px;
+}
+
+h3{
+    font-size:20px;
+    color:#105793;
+    margin-bottom: 5px;
+}
+#right_content p, #footer p{
+    font-size:16px;
+    margin-bottom:10px;
+}
+#right_content ul li p, #right_content ol li p{
+    font-size:15px;
+    margin-bottom:10px;
+}
+#right_content ul, #right_content ol{
+    margin-left: 40px;
+}
+#right_content img{
+    margin:5px 0 10px 213px;
+}
+
+#footer{
+    border: 5px solid #0087dd;
+    box-shadow: 2px 2px 0px #727272;
+    padding:20px 0;
+
+}
+
+#footer img{
+    width:113px;
+    margin:0 20px;
+}
+
+#footer div{
+    width:500px;
+}
