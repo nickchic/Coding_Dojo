@@ -16,9 +16,6 @@ while(daysUntilBDay > 0){
 
     }
 
-
-    console.log();
-
     daysUntilBDay--;
 
 }
