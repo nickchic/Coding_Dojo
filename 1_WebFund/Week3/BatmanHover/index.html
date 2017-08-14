@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>jQuery Functions</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+
+            $(document).ready(function(){
+
+                $('img').hover(function(){
+
+                    var newSrc = $(this).attr("alt_src");
+                    var newAltSrc = $(this).attr("src");
+
+                    $(this).attr("alt_src", newAltSrc);
+                    $(this).attr("src", newSrc);
+
+                }, function(){
+
+                    var newSrc = $(this).attr("alt_src");
+                    var newAltSrc = $(this).attr("src");
+
+                    $(this).attr("alt_src", newAltSrc);
+                    $(this).attr("src", newSrc);
+
+                })
+
+            });
+
+        </script>
+        <style>
+            .pic{
+                display:inline-block;
+                margin-right: 20px;
+            }
+
+        </style>
+	</head>
+	<body>
+        <img src="./images/batman1.png" alt="0" alt_src="./images/batman2.png" class="pic"/>
+        <img src="./images/batman1.png" alt="0" alt_src="./images/batman2.png" class="pic"/>
+        <img src="./images/batman1.png" alt="0" alt_src="./images/batman2.png" class="pic"/>
+        <img src="./images/batman1.png" alt="0" alt_src="./images/batman2.png" class="pic"/>
+	</body>
+</html>
