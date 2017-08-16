@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact Cards</title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+        <script type="text/javascript">
+            function addEvents(){
+                $(".card, .description_box").click(function(){
+                    $(this).siblings().show();
+                    $(this).hide();
+                });
+            }
+
+            $(document).ready(function(){
+                $(".description_box").hide();
+                addEvents();
+
+                $("form").submit(function(){
+
+                    if($("[name=first_name]").val() == "" || $("[name=last_name]").val() == "" || $("textarea").val() == ""){
+
+                        alert("Fill out all forms!");
+
+                    } else {
+
+                        $("#contacts").append("<div class='contact'> <div class='card'> <h2>" + $("[name=first_name]").val() + " " + $("[name=last_name]").val() + "</h2> <p>Click for Description</p> </div> <div class='description_box'> <p class='description'>" + $("[name=description]").val() + "</p> <p>Click to go back</p></div></div>");
+
+                        $("input[type=text]").val("");
+                        $("textarea").val("");
+
+                        $(".description_box").hide();
+
+                        $(".card").show();
+
+                        addEvents();
+
+                    }
+                    return false;
+
+                });
+
+            });
+        </script>
+        <style type="text/css">
+            input, textarea{
+                display:block;
+                margin:10px 0;
+            }
+            #form{
+                display:inline-block;
+                width: 350px;
+            }
+            #contacts{
+                display:inline-block;
+                vertical-align: top;
+                padding-top: 20px;
+                width:630px;
+            }
+            .card, .description_box{
+                display:inline-block;
+                vertical-align: top;
+                border:1px solid black;
+                padding:10px 0 30px 0;
+                width: 300px;
+                height: 50px;
+                text-align: center;
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+            h2{
+                margin: 10px 0 0 0;
+            }
+            p{
+                margin-top: 5px;
+                font-size: 13px;
+            }
+            .description{
+                font-weight: bold;
+                font-size: 16px;
+                margin-bottom: 0;
+            }
+            .contact{
+                display:inline-block;
+            }
+            body{
+                width:1000px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="form">
+        <h3>Fill out to make a new contact card</h3>
+        <form>
+            First name: <input type="text" name="first_name" value=""/>
+            Last name: <input type="text" name="last_name" value=""/>
+            Description: <textarea name="description" rows="4" cols="50"></textarea>
+            <input type="submit" />
+        </form>
+        </div>
+        <div id="contacts">
+
+        </div>
+    </body>
+</html>
