@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>jQuery Functions</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('form').submit(function(){
+                    var city = $("[name=city]").val()
+                    $.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&&appid=fc3be2ebaffffb286cf8706e48a297e8`, function(weather){
+                        $("div").html(`
+                            <h2>${city}</h2>
+                            <p>${weather.main.temp}</p>
+                            `);
+                    }, "json");
+                    return false;
+                })
+            });
+        </script>
+	</head>
+	<body>
+    <form>
+        City <input type="text" name="city" value=""/>
+        <input type="submit" />
+    </form>
+    <div>
+
+    </div>
+	</body>
+</html>
