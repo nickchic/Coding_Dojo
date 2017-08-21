@@ -16,10 +16,16 @@
 
                     } else {
 
-                        $("table").append("<tr><td>" + $("[name=first_name]").val() + "</td><td>"+ $("[name=last_name]").val() +"</td><td>"+ $("[name=email]").val() +"</td><td>"+ $("[name=phone]").val() +"</td></tr>");
+                        var html = `<tr>
+                                        <td>${$("[name=first_name]").val()}</td>
+                                        <td>${$("[name=last_name]").val()}</td>
+                                        <td>${$("[name=email]").val()}</td>
+                                        <td>${$("[name=phone]").val()}</td>
+                                    </tr>`;
+                        $("table").append(html);
                         $("input[type=text]").val("");
                     }
-                    
+
                     return false;
 
                 });

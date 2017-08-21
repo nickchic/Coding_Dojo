@@ -19,5 +19,5 @@ while(daysUntilBDay > 0){
     daysUntilBDay--;
 
 }
-
-console.log("HAPPY BIRTHDAY!!!!");
+var x = "dog";
+console.log('HAPPY BIRTHDAY!!!! ${x}');

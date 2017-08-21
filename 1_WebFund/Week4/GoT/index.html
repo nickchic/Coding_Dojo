@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>GoT</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("img").click(function(){
+                    var id = $(this).attr("house-id");
+                    $.get(`https://www.anapioficeandfire.com/api/houses/${id}`, function(house){
+                        var html = "";
+                        html += `
+                            <h2>House Info</h2>
+                            <p><span>Name:</span> ${house.name}</p>
+                            <p><span>Words:</span> ${house.words}</p>
+                            <span>Titles:</span>
+                            <ul>
+                            `;
+                        for(var i = 0; i < house.titles.length; i++){
+                            html += `<li>${house.titles[i]}</li>`
+                        }
+                        html += "</ul>";
+                        $("div").html(html);
+                    },"json");
+                });
+            });
+        </script>
+        <style>
+            img{
+                display:inline-block;
+                width:200px;
+                vertical-align: top;
+            }
+            div{
+                border:3px solid black;
+                width:760px;
+                padding:20px;
+                margin-top: 20px;
+            }
+            span{
+                font-weight: bold;
+            }
+        </style>
+	</head>
+	<body>
+        <img src="./images/Baratheon.png" id="Baratheon" house-id="15" alt="Baratheon" />
+        <img src="./images/Lannister.jpg" id="Lannister" house-id="229" alt="Lannister" />
+        <img src="./images/Stark.png" id="Stark" house-id="362" alt="Stark" />
+        <img src="./images/Targaryen.jpg" id="Targaryen" house-id="378" alt="Targaryen" />
+        <div>
+            <h2>House Info</h2>
+            <p><span>Name:</span> </p>
+            <p><span>Words:</span> </p>
+            <span>Titles:</span>
+            <ul>
+            </ul>
+        </div>
+	</body>
+</html>
