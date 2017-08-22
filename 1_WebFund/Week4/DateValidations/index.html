@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>Date Validation</title>
+        <link rel="stylesheet" type="text/css" href="jquery-ui.css" />
+		<script src="jquery.js"></script>
+        <script src="jquery-ui.js"></script>
+        <script>
+
+            $(document).ready(function(){
+                $( ".date" ).datepicker();
+                $( function() {
+                    var dateFormat = "mm/dd/yy",
+                      from = $( "#from" )
+                        .datepicker({
+                          defaultDate: "+1w",
+                          changeMonth: true,
+                          numberOfMonths: 1
+                        })
+                        .on( "change", function() {
+                          to.datepicker( "option", "minDate", getDate( this ) );
+                        }),
+                      to = $( "#to" ).datepicker({
+                        defaultDate: "+1w",
+                        changeMonth: true,
+                        numberOfMonths: 1
+                      })
+                      .on( "change", function() {
+                        from.datepicker( "option", "maxDate", getDate( this ) );
+                      });
+
+                    function getDate( element ) {
+                      var date;
+                      try {
+                        date = $.datepicker.parseDate( dateFormat, element.value );
+                      } catch( error ) {
+                        date = null;
+                      }
+
+                      return date;
+                    }
+                  } );
+
+                $("#error").hide();
+
+                $("form").submit(function(){
+                    if($("#name").val() == "" || $("#from").val() == "" || $("#to").val() == ""){
+                        $("#error").show();
+                    } else {
+                        $("#error").hide();
+                        alert(`${$("#name").val()} your cruise has been booked from ${$("#from").val()} to ${$("#to").val()}`);
+                    }
+
+                    return false;
+                });
+            });
+
+        </script>
+        <style>
+        h4{
+            margin:15px 0 5px 0;
+        }
+        input{
+            display: block;
+        }
+        #submit{
+            margin-top: 10px;
+        }
+        #error{
+            color:red;
+            margin-top: 10px;
+        }
+        </style>
+	</head>
+	<body>
+        <form>
+            <h4>From</h4>
+            <input type="text" class="date" id="from" />
+            <h4>To</h4>
+            <input type="text" class="date" id="to" />
+            <h4>Name</h4>
+            <input type="text" id="name" />
+            <input type="submit" id="submit"/>
+        </form>
+        <div id="error">
+            Please fill out all the forms.
+        </div>
+	</body>
+</html>
