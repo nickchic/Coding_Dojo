@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>Sort</title>
+        <link rel="stylesheet" type="text/css" href="jquery-ui.css" />
+		<script src="jquery.js"></script>
+        <script src="jquery-ui.js"></script>
+        <script>
+
+            $(document).ready(function(){
+
+                $("#sort").sortable();
+
+            });
+
+        </script>
+        <style>
+            .pic{
+                display:block;
+            }
+            *{
+                margin:0;
+                padding:0;
+            }
+            ul{
+                list-style: none;
+            }
+
+        </style>
+	</head>
+	<body>
+        <ul id="sort">
+            <li><img src="./images/sort1.png" alt="1"  class="pic"/></li>
+            <li><img src="./images/sort2.png" alt="2"  class="pic"/></li>
+            <li><img src="./images/sort3.png" alt="3"  class="pic"/></li>
+            <li><img src="./images/sort4.png" alt="4"  class="pic"/></li>
+            <li><img src="./images/sort5.png" alt="5"  class="pic"/></li>
+        </ul>
+	</body>
+</html>
