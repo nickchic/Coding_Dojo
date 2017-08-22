@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>jQueryUI</title>
+        <link rel="stylesheet" type="text/css" href="jquery-ui.css" />
+		<script src="jquery.js"></script>
+        <script src="jquery-ui.js"></script>
+        <script>
+
+            $(document).ready(function(){
+
+                $("#acc").accordion();
+                $( "#tabs" ).tabs();
+                $( "#menu" ).menu();
+            });
+
+        </script>
+        <style>
+            #acc, #tabs{
+                width:500px;
+                margin:20px 0;
+                padding:5px;
+            }
+            #menu{
+                width:150px;
+                margin:20px 0;
+                padding:5px;
+            }
+        </style>
+	</head>
+	<body>
+        <div id="acc">
+            <h3>Accordian 1</h3>
+            <div>
+                <p>Check it out yo!</p>
+            </div>
+            <h3>Accordian 2</h3>
+            <div>
+                <p>Check it out AGAIN!</p>
+            </div>
+            <h3>Accordian 3</h3>
+            <div>
+                <p>Check it out one last time!</p>
+            </div>
+        </div>
+        <div id="tabs">
+            <ul>
+                <li><a href="#fragment-1">Tab 1</a></li>
+                <li><a href="#fragment-2">Tab 2</a></li>
+                <li><a href="#fragment-3">Tab 3</a></li>
+                <li><a href="#fragment-4">Tab 4</a></li>
+            </ul>
+            <div id="fragment-1">
+                <p>TABS</p>
+            </div>
+            <div id="fragment-2">
+                <p>There could be important info here</p>
+            </div>
+            <div id="fragment-3">
+                <p>But not here</p>
+            </div>
+            <div id="fragment-4">
+                <p>Nor here</p>
+            </div>
+        </div>
+        <ul id="menu">
+            <li><div>Food</div></li>
+            <li><div>Tissues</div></li>
+            <li>
+                <div>Cars</div>
+                <ul>
+                    <li><div>Red Cars</div></li>
+                    <li><div>Blue Cars</div></li>
+                    <li><div>Trucks</div></li>
+                </ul>
+            </li>
+            <li><div>Something</div></li>
+        </ul>
+	</body>
+</html>
