@@ -25,6 +25,13 @@
 		height:28px;
 		position:absolute;
 	}
+	.enemy2{
+		background: url('1942.gif');
+		background-position: -89px -367px;
+		width:16px;
+		height:28px;
+		position:absolute;
+	}
 	.bullet{
 		background: url('1942.gif');
 		background-position: -185px -400px;
@@ -49,9 +56,11 @@
 		<div id='hero' style='top:300px; left:300px;'></div>
 		<div id='enemies'></div>
 		<div id='bullets'></div>
+		<div class='enemy2' style='top:50px; left:50px;'></div>
 	</div>
 
 	<div id='score'>100</div>
+	<audio id="explosion" src="explosion.wav"></audio>
 
 
 <script>
@@ -61,11 +70,13 @@
         y:500
     }
 
-    var enemies = [{x:50, y:50}, {x:250, y:120}, {x:420, y:100}, {x:50, y:175}, {x:450, y:250}, {x:230, y:350}, {x:50, y:75}];
+    var enemies = [{x:50, y:50, type:1}, {x:250, y:120, type:2}, {x:420, y:100, type:1}, {x:50, y:175, type:2}, {x:450, y:250, type:1}, {x:230, y:350, type:2}, {x:50, y:75, type:1}];
 
     var bullets =[];
 
     var score = 0;
+
+	var sound = document.getElementById("explosion");
 
     function displayHero(){
         document.getElementById('hero').style['top'] = hero.y + "px";
@@ -75,7 +86,7 @@
     function displayEnemies(){
         var output = "";
         for(var i = 0; i< enemies.length; i++){
-            output += `<div class='enemy1' style='top:${enemies[i].y}px; left:${enemies[i].x}px;'></div>`
+            output += `<div class='enemy${enemies[i].type}' style='top:${enemies[i].y}px; left:${enemies[i].x}px;'></div>`
         }
         document.getElementById('enemies').innerHTML = output;
     }
@@ -110,6 +121,7 @@
         moveBullets();
         displayBullets();
         detectCollison();
+		detectHeroCollison();
     }
 
     function displayBullets(){
@@ -141,7 +153,7 @@
     }
 
     function addEnemy(){
-        enemies.push({x:Math.random()*1000, y:0});
+        enemies.push({x:Math.random()*1000, y:0, type:Math.floor(Math.random()*2)});
     }
 
     function moveBullets(){
@@ -164,11 +176,25 @@
                     deleteBullet(i);
                     deleteEnemy(j);
                     addEnemy();
+					sound.play();
                     break;
                 }
             }
         }
     }
+
+	function detectHeroCollison(){
+		for(var j = 0; j< enemies.length; j++){
+			if(Math.abs(hero.x - enemies[j].x) < 15 && Math.abs(hero.y - enemies[j].y) < 15){
+				score -= 500;
+				updateScore();
+				deleteEnemy(j);
+				addEnemy();
+				sound.play();
+				break;
+			}
+		}
+	}
 
     setInterval(gameLoop,20);
 
