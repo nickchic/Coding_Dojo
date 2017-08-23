@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>Libraries</title>
+        <script src="jquery.js"></script>
+		<script src="math.js"></script>
+        <script src="fractions.js"></script>
+        <script src="Chart.js"></script>
+        <script src="icheck.js"></script>
+        <link href="minimal.css" rel="stylesheet">
+        <link href="blue.css" rel="stylesheet">
+        <script>
+
+        function stringRatio (value) {
+            var x = "";
+            x += math.format(value, {fraction: 'ratio'});
+            return x;
+        }
+
+            $(document).ready(function(){
+                $("#frac").click(function(){
+                    var decimal = $("#dec").val();
+                    $("#answer").html(`Answer = ${stringRatio(math.fraction(decimal))}`)
+                });
+
+                //chart
+                var chartData = {
+                datasets: [{ data: [40, 25, 13],
+                backgroundColor: [
+               'rgba(255, 99, 132, 0.2)',
+               'rgba(54, 162, 235, 0.2)',
+               'rgba(255, 206, 86, 0.2)']
+               }],
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                labels: ['Something','Another Thing','That 3rd Thing']
+            };
+                var ctx = $("#myChart");
+                var myLineChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: chartData,
+                    option: Chart.defaults.pie
+                });
+
+                $('#check input').iCheck({
+                    checkboxClass: 'icheckbox_minimal-blue',
+                    radioClass: 'iradio_minimal-blue',
+                    increaseArea: '20%'
+                });
+
+            });
+
+        </script>
+        <style>
+            #chartHolder{
+                margin-top: 30px;
+                width:300px;
+                height:300px;
+            }
+            h3{
+                margin-top: 30px;
+            }
+        </style>
+	</head>
+	<body>
+        <h3>Type in a decimal and get the fraction! (Math.js)</h3>
+        <input type="text" id="dec"/>
+        <button id="frac">Get Fraction</button>
+        <p id="answer" >Answer = </p>
+        <h3>Chart.js at work!</h3>
+        <div id="chartHolder">
+            <canvas id="myChart"></canvas>
+        </div>
+        <h3>iCheck.js at work!</h3>
+        <div id="check">
+            <label>One</label>
+            <input type="radio" name="iCheck" checked>
+            <label>Two</label>
+            <input type="radio" name="iCheck">
+            <label>Three</label>
+            <input type="radio" name="iCheck">
+        </div>
+	</body>
+</html>
