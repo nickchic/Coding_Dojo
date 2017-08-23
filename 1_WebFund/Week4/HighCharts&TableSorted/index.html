@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>High Charts and Table Sorter</title>
+        <script src="jquery.js"></script>
+		<script src="jquery.tablesorter.js"></script>
+        <script src="highcharts.js"></script>
+        <script>
+
+            $(document).ready(function(){
+
+                var chartData ={
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'How many tools do you have?'
+                    },
+                    xAxis: {
+                        categories: ['Hammers', 'Screwdrivers']
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'amount of things'
+                        }
+                    },
+                    series: [{
+                        name: 'You',
+                        data: [1, 2]
+
+                    }]
+                }
+
+                function buildChart() {
+                    var myChart = Highcharts.chart('chart', chartData);
+                };
+
+                buildChart();
+
+                $("#graph_button").click(function(){
+                    chartData.xAxis.categories.push($("#tool").val());
+                    chartData.series[0].data.push(parseInt($("#amount").val()));
+                    buildChart();
+                })
+
+                $("#myTable").tablesorter();
+
+                $("#table_button").click(function(){
+                    $('#myTable tbody').append(`
+                    <tr>
+                        <td>${$("#name").val()}</td>
+                        <td>${$("#hammer").val()}</td>
+                        <td>${$("#screw").val()}</td>
+                    </tr>`);
+                    $("#myTable").tablesorter();
+                })
+
+
+
+            });
+
+        </script>
+        <style>
+            #myTable{
+                margin-top:50px;
+            }
+            td{
+                padding:10px;
+                border:1px solid grey;
+            }
+            th{
+                padding-right: 20px;
+                border:1px solid grey;
+                background-color: #e0e0e0;
+            }
+        </style>
+	</head>
+	<body>
+        <div id="chart" style="width:100%; height:400px;"></div>
+        <h3>Add something to the graph!</h3>
+        Tool:<input type="text" id="tool" />
+        Amount:<input type="text" id="amount" />
+        <button id="graph_button">Add!</button>
+        <table id="myTable" class="tablesorter">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Screwdrivers</th>
+                    <th>Hammers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nick</td>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Lindsey</td>
+                    <td>4</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Tim</td>
+                    <td>2</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Sam</td>
+                    <td>6</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Add something to the table!</h3>
+        Name:<input type="text" id="name" />
+        Hammers:<input type="text" id="hammer" />
+        Screwdrivers:<input type="text" id="screw" />
+        <button id="table_button">Add!</button>
+	</body>
+</html>
