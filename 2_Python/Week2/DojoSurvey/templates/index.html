@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Form</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+    </head>
+    <body>
+        <h1>Fill out this form</h1>
+        <form action='/action' method='post'>
+            Your name: <input type="text" name='name' />
+            Dojo:
+            <select name="dojo">
+                <option value="Online">Online</option>
+                <option value="On site">On Site</option>
+            </select>
+            Favorite Language:
+            <select name="language">
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C">C</option>
+            </select>
+            Comments: <textarea name="comment"></textarea>
+            <input type="submit" name="submit_form" />
+        </form>
+    </body>
+</html>
