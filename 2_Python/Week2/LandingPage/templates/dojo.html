@@ -1,0 +1,13 @@
+<html>
+    <head>
+       <title>Form Test Index</title>
+       <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"
+    </head>
+    <body>
+      <h3>Create a User</h3>
+      <form action='/action' method='post'>
+          Name Of Your Dojo: <input type='text' name='name'>
+          <input type='submit' value='named dojo'>
+      </form>
+    </body>
+</html>
