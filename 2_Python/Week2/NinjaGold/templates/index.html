@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gold Game</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div>
+            <p>Your Gold: {{ gold }}</p>
+        </div>
+        <div>
+            <div class="option">
+                <h1>Farm</h1>
+                <p>(earns 10-20 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="farm" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class="option">
+                <h1>Cave</h1>
+                <p>(earns 5-10 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="cave" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class="option">
+                <h1>House</h1>
+                <p>(earns 2-5 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="house" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class="option">
+                <h1>Casino</h1>
+                <p>(earns/takes 0-50 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="casino" />
+                    <input type="submit" value="Bet Gold!"/>
+                </form>
+            </div>
+        </div>
+        <div>
+            <h4>Activies:</h4>
+            <div id="activites">
+                {% for item in log %}
+                <p>{{ item }}</p>
+                {% endfor %}
+            </div>
+            <form action="/reset" method="post">
+                <input type="submit" value="Reset!"/>
+            </form>
+        </div>
+    </body>
+</html>

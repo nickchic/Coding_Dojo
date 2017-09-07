@@ -4,7 +4,10 @@ app.secret_key = 'ThisIsSecret'
 
 @app.route('/')
 def index():
-    session["num"] += 1
+    try:
+        session['counter'] += 1
+    except KeyError:
+        session['counter'] = 1
     return render_template('index.html', num=session['num'])
 
 @app.route('/two')
