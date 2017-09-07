@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Form</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+    </head>
+    <body>
+        <h1>Fill out this form</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        <form action='/action' method='post'>
+            Name: <input type="text" name='name' />
+            Email: <input type="text" name='email' />
+            Password: <input type="password" name='password' />
+            Confirm Password: <input type="password" name='confirm' />
+            DOB: <input type="text" name='dob' />
+            <input type="submit" name="submit_form" />
+        </form>
+    </body>
+</html>

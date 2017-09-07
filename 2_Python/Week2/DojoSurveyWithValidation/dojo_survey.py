@@ -4,7 +4,7 @@ app.secret_key = 'ThisIsSecret'
 
 @app.route('/')
 def index():
-     return render_template('index.html')
+    return render_template('index.html')
 
 @app.route('/results')
 def display_results():
@@ -27,7 +27,7 @@ def submit_form():
         form_complete = False
     elif len(request.form['comment']) < 1:
         flash("Comment cannot be blank")
-        form_complete = False        
+        form_complete = False
     if form_complete:
         return redirect('/results')
     else:
