@@ -38,7 +38,7 @@ def submit_form():
     elif int(request.form['guess']) == session['number']:
         print "correct"
         session['guess'] = True
-        session['clueMessage'] = "Correct! it Took you {} tries, Play again?".format(session['counter'])
+        session['clueMessage'] = "Correct! The number was {}, it took you {} tries, Play again?".format(session['number'],session['counter'])
     return redirect('/')
 
 @app.route('/reset', methods=['POST'])
