@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>{{name}}</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+    </head>
+    <body>
+        {% if name == "red"%}
+        <img src="{{ url_for('static', filename='raphael.jpg') }}">
+        {% elif name == "orange"%}
+        <img src="{{ url_for('static', filename='michelangelo.jpg') }}">
+        {% elif name == "blue"%}
+        <img src="{{ url_for('static', filename='leonardo.jpg') }}">
+        {% elif name == "purple"%}
+        <img src="{{ url_for('static', filename='donatello.jpg') }}">
+        {% else %}
+        <img src="{{ url_for('static', filename='notapril.jpg') }}">
+        {% endif %}
+    </body>
+</html>
