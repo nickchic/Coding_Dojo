@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, session, flash
 import re
-import datetime
+from datetime import datetime
+
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 DATE_REGEX = re.compile(r'^\d{1,2}\/\d{1,2}\/\d{4}$')
 app = Flask(__name__)
@@ -55,10 +56,16 @@ def submit_form():
         flash("DOB must be in date form (MM/DD/YYYY)")
         form_complete = False
     else:
-        dateToCheck = datetime.datetime.strptime(request.form['dob'], "%m/%d/%Y")
-        if dateToCheck.date() < datetime.today().date():
-            flash("Were you born in the future?")
+        try:
+            dateToCheck = datetime.strptime(request.form['dob'], "%m/%d/%Y")
+            if dateToCheck > datetime.today():
+                print "date is no good"
+                flash("Were you born in the future?")
+                form_complete = False
+        except ValueError:
+            flash("Not a correct date")
             form_complete = False
+
 
     if form_complete:
         #stores values
