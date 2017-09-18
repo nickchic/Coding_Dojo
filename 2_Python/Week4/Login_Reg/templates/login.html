@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>Login</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+	</head>
+	<body>
+        <h2>Register</h2>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div id="error">
+                {% for message in messages %}
+                    <p class="error">{{message}}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <form action='/login_attempt' method='POST'>
+            Email: <input type="text" name="email" /> <br />
+            Password: <input type="password" name="password" /> <br />
+            <input type="submit" value="Login" />
+        </form>
+	</body>
+</html>

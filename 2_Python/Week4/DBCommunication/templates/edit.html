@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Friends</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+    </head>
+    <body>
+        {% if one_friend %}
+            <p>ID: {{ one_friend['id'] }}</p>
+            <p>First Name: {{ one_friend['first_name'] }}</p>
+            <p>Last Name: {{ one_friend['last_name'] }}</p>
+            <p>Occupation: {{ one_friend['email'] }}</p>
+        {% endif %}
+        <h2>Update friend</h2>
+        <form action='/update_friend/{{ one_friend['id'] }}' method='POST'>
+            <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+            <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+            <label for="occupation">Occupation:<input type="text" name="email" id="occupation"></label>
+            <input type="submit" value="Update">
+        </form>
+    </body>
+</html>
