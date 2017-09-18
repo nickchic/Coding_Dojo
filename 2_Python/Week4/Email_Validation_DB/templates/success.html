@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>jQuery Functions</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+	</head>
+	<body>
+
+        <h1>Success!</h1>
+        <div id="success">
+            {% with messages = get_flashed_messages() %}
+            <p>The email address you entered {{ messages[0] }} is a VALID email address! Thanks!</p>
+            {% endwith %}
+        </div>
+        <h3>Emails entered:</h3>
+        {% for email in emails: %}
+            <p>Email = {{ email['email'] }}, Time Added = {{ email['created_at'] }} </p>
+        {% endfor %}
+	</body>
+</html>
