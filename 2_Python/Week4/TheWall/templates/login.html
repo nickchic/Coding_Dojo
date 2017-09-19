@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>Register or Login</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+	</head>
+	<body>
+        <div id="reg">
+            {% if logged_in %}
+                <h2>Hello {{ name }}, Register a new account! </h2>
+            {% else %}
+                <h2>Register</h2>
+            {% endif %}
+
+            <form action='/reg' method='POST'>
+                First name: <input type="text" name="first_name" /> <br />
+                Last name: <input type="text" name="last_name" /> <br />
+                Email: <input type="text" name="email" /> <br />
+                Password: <input type="password" name="password" /> <br />
+                Confirm: <input type="password" name="confirm" /> <br />
+                <input type="submit" value="Register" />
+            </form>
+        </div>
+        <div id="login">
+            {% if logged_in %}
+                <h2>Hello {{ name }}, Log in as someone else! </h2>
+            {% else %}
+                <h2>Log In</h2>
+            {% endif %}
+
+
+            <form action='/login_attempt' method='POST'>
+                Email: <input type="text" name="email" /> <br />
+                Password: <input type="password" name="password" /> <br />
+                <input type="submit" value="Log In" />
+            </form>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div id="error">
+                {% for message in messages %}
+                    <p class="error">{{message}}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+	</body>
+</html>
