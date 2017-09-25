@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>Users</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}"/>
+	</head>
+	<body>
+        <h3>User {{ user['id'] }}</h3>
+        <p> Name: {{ user['first_name'] }} {{ user['last_name'] }} </p>
+        <p> Email: {{ user['email'] }} </p>
+        <p> Created At: {{ user['created_at'] }}</p>
+        <p> Updated At: {{ user['updated_at'] }}</p>
+        <a href="/users/{{ user['id'] }}/edit">Edit</a>
+        <a href="/users/{{ user['id'] }}/destroy">Delete</a>
+	</body>
+</html>

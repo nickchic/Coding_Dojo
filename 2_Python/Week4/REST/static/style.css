@@ -1,0 +1,30 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+#error{
+    background-color: red;
+    padding: 10px;
+    margin:10px;
+}
+.error{
+    color:white;
+}
+
+#users tr td{
+    border: solid 1px black;
+    padding: 3px;
+}
+
+.id_number{
+    width: 50px;
+}
+
+.name, .date, .email{
+    width: 200px;
+}
+
+.action{
+    width: 150px;
+}
