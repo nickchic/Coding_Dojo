@@ -1,13 +1,3 @@
-
-
-class Patient(object):
-    def __init__(self, id_num, name, allergies):
-        self.id_num = id_num
-        self.name = name
-        self.allergies = allergies
-        self.bed_number = None
-
-
 class Hospital(object):
     def __init__(self, name, capacity):
         self.name = name
@@ -38,22 +28,5 @@ class Hospital(object):
             if patient.id_num == patient_to_discharge.id_num:
                 self.patients.pop(index)
         return self
-
-nick = Patient(1, "Nick", "Sulfa Drugs")
-lindsey = Patient(2, "Lindsey", "None")
-mary = Patient(3, "Mary", "Peanuts")
-ryan = Patient(4, "Ryan", "None")
-
-penn_hospital = Hospital("Pennsylvania Hospital", 3)
-
-penn_hospital.admit(nick).admit(lindsey).admit(mary).admit(ryan)
-
-print "-- take one ---"
-for patient in penn_hospital.patients:
-    print patient.name, patient.bed_number
-
-penn_hospital.discharge(nick).admit(ryan)
-
-print "-- take two ---"
-for patient in penn_hospital.patients:
-    print patient.name, patient.bed_number
+    def __repr__(self):
+        return "Name: {}, Capacity: {}, Patients: {}".format(self.name, self.capacity, self.patients)

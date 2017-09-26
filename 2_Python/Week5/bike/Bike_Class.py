@@ -19,8 +19,5 @@ class Bike(object):
         print "Riding backwards"
         return self;
 
-red_bike = Bike(10,20)
-red_bike.ride().ride().ride().reverse().displayInfo()
-
-blue_bike = Bike(50,100)
-blue_bike.ride().ride().reverse().reverse().displayInfo()
+    def __repr__(self):
+        return "Price: {}, Max Speed: {}, Miles: {}".format(self.price, self.max_speed, self.miles)

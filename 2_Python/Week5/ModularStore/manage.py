@@ -7,3 +7,5 @@ toy = Product(20.0, "Lego Batman", 2, "Lego", 5.50)
 
 nicks_store = Store("Philadelphia", "Nick")
 nicks_store.add_product(beer).add_product(soda).add_product(toy).inventory()
+
+print nicks_store

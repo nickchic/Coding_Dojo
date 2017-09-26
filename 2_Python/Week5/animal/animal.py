@@ -11,6 +11,8 @@ class Animal(object):
     def display_health(self):
         print self.name, " has ", self.health, " HP."
         return self
+    def __repr__(self):
+        return "-- Animal Name: {}, Animal Health: {} --".format(self.name, self.health)
 
 class Dog(Animal):
     def __init__(self, name):
@@ -29,16 +31,3 @@ class Dragon(Animal):
         super(Dragon, self).display_health()
         print "I am a Dragon"
         return self
-
-red_panda = Animal("amber",100)
-
-red_panda.run().display_health()
-
-hank = Dog("Hank")
-
-hank.display_health()
-hank.pet().display_health()
-
-drogon = Dragon("Drogon")
-
-drogon.fly().display_health()

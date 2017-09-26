@@ -13,3 +13,5 @@ class Store(object):
             print "product ", idx
             product.displayInfo()
         return self
+    def __repr__(self):
+        return "Store Location: {}, Store Owner: {}, Store Products: {}".format(self.location, self.owner, self.products)

@@ -23,6 +23,8 @@ class Product(object):
         print "cost = ", self.cost
         print "status = ", self.status
         return self
+    def __repr__(self):
+        return "-- Name: {}, Price: {}, Status: {} --".format(self.name, self.price, self.status)
 
 
 if __name__ == "__main__":
