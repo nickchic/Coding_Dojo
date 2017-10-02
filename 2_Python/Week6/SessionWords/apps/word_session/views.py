@@ -7,8 +7,6 @@ def index(request):
         request.session['words']
     except KeyError:
         request.session['words'] = []
-        
-    print request.session['words']
 
     return render(request, "word_session/index.html")
 
@@ -49,10 +47,7 @@ def add_word(request):
      'classes': class_string
     }
 
-    print new_word
-
     request.session['words'].append(new_word)
-    print request.session['words']
     request.session.modified = True
     return redirect("/")
 
