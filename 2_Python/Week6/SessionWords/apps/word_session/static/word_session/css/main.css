@@ -1,0 +1,37 @@
+#pick_color{
+    padding: 20px 0
+}
+
+#form{
+    display: inline-block;
+    width: 300px;
+    vertical-align: top;
+}
+
+#display{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.green{
+    color:green;
+    font-size: 16px;
+}
+
+.red{
+    color:red;
+    font-size: 16px;
+}
+
+.blue{
+    color:blue;
+    font-size: 16px;
+}
+
+.big{
+    font-size: 22px;
+}
+
+.description{
+    font-size: 12px;
+}
