@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        {% load static %}
+        <link rel='stylesheet' type="text/css" href="{% static 'store/css/main.css'%}">
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        Thank you for buying <b> {{request.session.amount}} {{request.session.item_sold.name}} </b>  at <b>${{ request.session.item_sold.price }}</b>, (Total ${{ request.session.purchase_amount }}) you have spend a total of <b>${{ request.session.money_spent}}</b>.
+    </body>
+</html>
