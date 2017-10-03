@@ -1,0 +1,14 @@
+.option{
+    display:inline-block;
+    width:200px;
+    border: 1px solid black;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+#activites{
+    border: 1px solid black;
+    width:600px;
+    height: 300px;
+    overflow: scroll;
+}

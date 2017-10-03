@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gold Game</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'gold/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div>
+            <p>Your Gold: {{ request.session.gold }}</p>
+        </div>
+        <div>
+            <div class="option">
+                <h1>Farm</h1>
+                <p>(earns 10-20 golds)</p>
+                <form action="/gold/process_money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="farm" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class="option">
+                <h1>Cave</h1>
+                <p>(earns 5-10 golds)</p>
+                <form action="/gold/process_money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="cave" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class="option">
+                <h1>House</h1>
+                <p>(earns 2-5 golds)</p>
+                <form action="/gold/process_money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="house" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div class="option">
+                <h1>Casino</h1>
+                <p>(earns/takes 0-50 golds)</p>
+                <form action="/gold/process_money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="casino" />
+                    <input type="submit" value="Bet Gold!"/>
+                </form>
+            </div>
+        </div>
+        <div>
+            <h4>Activies:</h4>
+            <div id="activites">
+                {% for item in request.session.log %}
+                <p>{{ item }}</p>
+                {% endfor %}
+            </div>
+            <form action="/gold/reset/" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Reset!"/>
+            </form>
+        </div>
+    </body>
+</html>
