@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.dojo_ninja',
     'apps.Users',
     'apps.survey_app',
     'django.contrib.admin',
