@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>Users</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'rest/style.css' %}" media="screen" title="no title"  charset="utf-8">
+	</head>
+	<body>
+        <h3>User {{ user.id }}</h3>
+        <p> Name: {{ user.first_name }} {{ user.last_name }} </p>
+        <p> Email: {{ user.email }} </p>
+        <p> Created At: {{ user.created_at }}</p>
+        <p> Updated At: {{ user.updated_at }}</p>
+        <a href="/rest/users/{{ user.id }}/edit">Edit</a>
+        <a href="/rest/users/{{ user.id }}/destroy">Delete</a>
+	</body>
+</html>
