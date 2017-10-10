@@ -5,7 +5,7 @@ import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 
 class UserManager(models.Manager):
-    def user_reg_validation(self, postdata):
+    def user_validation(self, postdata):
         errors = {}
         if len(postdata['first_name']) < 2:
             errors['first_name'] = "First name must be at lease 2 characters long"
@@ -23,7 +23,22 @@ class User(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     email = models.CharField(max_length=20)
-    password_hash = models.CharField(max_length=256)
+    desc = models.TextField()
+    admin = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+
+class Message(models.Model):
+    text = models.TextField()
+    author = models.ForeignKey(User, related_name="written_messages")
+    recipient = models.ForeignKey(User, related_name="wall_messages")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Comment(models.Model):
+    text = models.TextField()
+    author = models.ForeignKey(User, related_name="comments")
+    message = models.ForeignKey(Message, related_name="comments")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
