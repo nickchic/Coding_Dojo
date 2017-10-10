@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title>Login</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'registration/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+	</head>
+	<body>
+        <h2>Login</h2>
+        {% if messages %}
+            <div id="error">
+            {% for message in messages %}
+                <p class="error">{{message}}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+        <form action='/login_attempt' method='POST'>
+            {% csrf_token %}
+            Email: <input type="text" name="email" /> <br />
+            Password: <input type="password" name="password" /> <br />
+            <input type="submit" value="Login" />
+        </form>
+	</body>
+</html>
