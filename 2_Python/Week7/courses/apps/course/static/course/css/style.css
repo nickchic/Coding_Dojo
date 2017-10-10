@@ -1,0 +1,34 @@
+#courses{
+    padding:20px;
+    background-color: #afdcf1;
+}
+
+td{
+    padding: 10px;
+    border:solid 1px black;
+    background-color: white;
+}
+
+th{
+    padding: 10px;
+    border:solid 1px black;
+    background-color: #e4e4e4;
+}
+
+textarea{
+    margin: 10px 0;
+    width:200px;
+    height:100px;
+    vertical-align: top;
+    display: block;
+}
+
+input[type=text]{
+    display: block;
+    width:200px;
+    margin-top: 10px;
+}
+
+.error{
+    color:red;
+}

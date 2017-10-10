@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'course/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h2>Add a new course</h2>
+        {% if messages %}
+            {% for error in messages %}
+                <p class='error'>{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        <form action='/new/course' method="POST">
+            {% csrf_token %}
+            Name: <input type='text' name='name'/><br />
+            Description: <textarea name='desc'></textarea>
+            <input type='submit' value='Add' />
+        </form>
+        {% if courses %}
+            <h2>Courses</h2>
+            <table id="courses">
+                <tr>
+                    <th>Course Name</th>
+                    <th>Description</th>
+                    <th>Date Added</th>
+                    <th>Email</th>
+                </tr>
+            {% for course in courses %}
+                <tr>
+                    <td class="name">{{ course.name }}</td>
+                    <td class="desc">{{ course.desc }}</td>
+                    <td class="date">{{ course.created_at }}</td>
+                    <td class="action"> <a href="/remove/{{ course.id }}/confirm">Remove</a> </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>
