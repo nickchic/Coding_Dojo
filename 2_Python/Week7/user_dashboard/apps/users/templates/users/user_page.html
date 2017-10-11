@@ -4,9 +4,62 @@
         <meta charset="utf-8" />
 		<title></title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'users/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="{% static 'users/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
 	</head>
 	<body>
-        <p>User Page.</p>
+        <div id='header'>
+            {% if logged_in %}
+            <span><a href='/dashboard'>Dashboard</a></span>
+            <span><a href='/users/show'>Home</a></span>
+            <span><a href='/users/edit'>Edit Info</a></span>
+            <span><a href='/logout'>Log Out</a></span>
+            {% else %}
+            <span><a href='/login'>Log In</a></span>
+            <span><a href='/register'>Register</a></span>
+            {% endif %}
+        </div>
+        <div id="user_info">
+            <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+            Register At: {{ user.created_at }} <br />
+            User ID: {{ user.id }} <br />
+            Email Addess: {{ user.email }} <br />
+            Description: {{ user.desc }} <br />
+        </div>
+        <div id='post_message'>
+            {% if logged_in %}
+                <h3>Leave a message for {{ user.first_name }} {{ user.last_name }}</h3>
+                <form action='/post_message/{{ user.id }}' method='POST'>
+                    {% csrf_token %}
+                    <textarea name='message'></textarea>
+                    <input type='submit' value='Post' />
+                </form>
+                {% else %}
+                <a href='/login'>Log In</a> to message {{ user.first_name }}
+            {% endif %}
+        </div>
+        <div id='messages'>
+            <h3>Messages For {{ user.first_name }}</h3>
+            {% for message in user.wall_messages.all %}
+                <div class='message'>
+                    <h4><a href='/users/show/{{ message.author.id }}'>{{ message.author.first_name }} {{ message.author.last_name }}</a> wrote:</h4>
+                    <p> {{ message.text }}</p>
+                </div>
+                {% for comment in message.comments.all %}
+                    <div class='comment'>
+                        <h4><a href='users/show/{{ comment.author.id }}'>{{ comment.author.first_name }} {{ comment.author.last_name }}</a> commented:</h4>
+                        <p> {{ comment.text }}</p>
+                    </div>
+                {% endfor %}
+                {% if logged_in %}
+                <div class='comment_form'>
+                    <form action='/post_comment/{{ user.id }}/{{ message.id }}' method='POST'>
+                        {% csrf_token %}
+                        <textarea name='comment'></textarea>
+                        <input type='submit' value='Comment' />
+                    </form>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
 	</body>
 </html>
