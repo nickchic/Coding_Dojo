@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^notes/', include('apps.notes.urls')),
+    url(r'^notes_two/', include('apps.notes_two.urls')),
     url(r'^admin/', admin.site.urls),
 ]

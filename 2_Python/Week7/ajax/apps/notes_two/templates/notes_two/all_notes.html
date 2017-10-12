@@ -1,0 +1,23 @@
+{% for note in notes %}
+<div class='note'>
+    <p>{{ note.title }}</p>
+    <form>
+        {% csrf_token %}
+        <textarea name='text' class='text_{{ note.id }}'>{{ note.text }}</textarea>
+        <input type='hidden' name='id' value='{{note.id}}' />
+    </form>
+</div>
+
+<script>
+    $(".text_{{ note.id }}").keyup(function(){
+        console.log('typing {{note.id}}');
+
+        $.ajax({
+          url: '/notes_two/add_text', /* Where should this go? */
+          method: 'post', /* Which HTTP verb? */
+          data: $(this).parent().serialize()
+        })
+    })
+</script>
+
+{% endfor %}

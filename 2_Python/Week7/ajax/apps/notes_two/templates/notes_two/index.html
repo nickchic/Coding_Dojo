@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Notes</title>
+    </head>
+    <body>
+        <div id='all_notes'>
+            {% for note in notes %}
+            <div class='note'>
+                <p>{{ note.title }}</p>
+                <form>
+                    {% csrf_token %}
+                    <textarea name='text' class='text_{{ note.id }}'>{{ note.text }}</textarea>
+                    <input type='hidden' name='id' value='{{note.id}}' />
+                </form>
+            </div>
+
+            <script>
+                $(".text_{{ note.id }}").keyup(function(){
+                    console.log('typing {{note.id}}');
+
+                    $.ajax({
+                      url: '/notes_two/add_text', /* Where should this go? */
+                      method: 'post', /* Which HTTP verb? */
+                      data: $(this).parent().serialize()
+                    })
+                })
+            </script>
+
+            {% endfor %}
+        </div>
+        <form action='/notes_two/add' method="post" class='ajax_form'>
+             {% csrf_token %}
+            <input type='text' name='title' />
+            <input type='submit' value='Add Note' />
+        </form>
+
+        <script>
+        $('.ajax_form').submit(function(e){
+            e.preventDefault()
+            console.log('yooo')
+
+            $.ajax({
+              url: $(this).attr('action'), /* Where should this go? */
+              method: 'post', /* Which HTTP verb? */
+              data: $(this).serialize(), /* Any data to send along? */
+              success: function(serverResponse) { /* What code should we run when the server responds? */
+                $('#all_notes').html(serverResponse)
+              }
+            })
+        })
+
+        </script>
+    </body>
+</html>
