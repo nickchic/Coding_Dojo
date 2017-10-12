@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title></title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'users/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+	</head>
+	<body>
+        <div id='header'>
+            {% if logged_in %}
+            <span><a href='/books'>Books</a></span>
+            <span><a href='/users/home'>Home</a></span>
+            <span><a href='/add'>Add Book / Review</a></span>
+            <span><a href='/logout'>Log Out</a></span>
+            {% else %}
+            <span><a href='/'>Log In</a></span>
+            <span><a href='/'>Register</a></span>
+            {% endif %}
+        </div>
+        <div id="user_info">
+            <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+            Register At: {{ user.created_at }} <br />
+            User ID: {{ user.id }} <br />
+            Email Addess: {{ user.email }} <br />
+        </div>
+        <div id='user_reviews'>
+            <h3>{{ user.first_name }} has posted reviews for the following books</h3>
+            {% for book in reviewed_books %}
+                <p><a href='/books/{{ book.id }}'>{{ book.title }}</a></p>
+            {% endfor %}
+        </div>
+	</body>
+</html>

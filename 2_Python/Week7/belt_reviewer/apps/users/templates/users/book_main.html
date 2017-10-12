@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title></title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'users/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+	</head>
+	<body>
+        <div id='header'>
+            {% if logged_in %}
+            <span><a href='/books'>Books</a></span>
+            <span><a href='/users/home'>Home</a></span>
+            <span><a href='/add'>Add Book / Review</a></span>
+            <span><a href='/logout'>Log Out</a></span>
+            {% else %}
+            <span><a href='/'>Log In</a></span>
+            <span><a href='/'>Register</a></span>
+            {% endif %}
+        </div>
+        <div id='recent'>
+            <h2>Recent Book Reviews</h2>
+            {% for review in recent_reviews %}
+                <div class='recent_book'>
+                    <h3><a href='books/{{review.book_id}}'>{{ review.book.title }}</a></h3>
+                    <p class='rating'>Rating {{ review.rating }}/5</p>
+                    <p class='name'><a href='users/{{review.reviewer_id}}'>{{ review.reviewer.first_name }}</a> says:</p>
+                    <p class='content'>{{ review.content }}</p>
+                    <p class='date'>Posted: {{ review.created_at }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div id='other'>
+            <h2>Other Books</h2>
+            <div id='other_scroll'>
+                {% for book in other_books %}
+                    <p><a href='/books/{{ book.id }}'>{{ book.title }}</a></p>
+                {% endfor %}
+            </div>
+        </div>
+	</body>
+</html>

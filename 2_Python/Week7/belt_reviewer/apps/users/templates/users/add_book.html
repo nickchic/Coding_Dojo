@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<title></title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'users/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+	</head>
+	<body>
+        <div id='header'>
+            {% if logged_in %}
+            <span><a href='/books'>Books</a></span>
+            <span><a href='/users/home'>Home</a></span>
+            <span><a href='/add'>Add Book / Review</a></span>
+            <span><a href='/logout'>Log Out</a></span>
+            {% else %}
+            <span><a href='/'>Log In</a></span>
+            <span><a href='/'>Register</a></span>
+            {% endif %}
+        </div>
+        <div id='add_review_book'>
+            {% if messages %}
+                <div id="error">
+                {% for message in messages %}
+                    <p class="error">{{ message }}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+            <form action='/add/review_book/' method='POST'>
+                {% csrf_token %}
+                Book title: <input type='text' name='book_title' />
+                Select an author:
+                <select name='author_select'>
+                    <option value="blank"></option>
+                    {% for book in books %}
+                        <option value="{{ book.author }}">{{ book.author }}</option>
+                    {% endfor %}
+                </select><br />
+                Or Type In New Author:
+                <input type='text' name='author_text' />
+                Review:
+                <input type='text' name='review_content' />
+                Rating:
+                <select name='review_rating'>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input type='submit' value='Add' />
+            </form>
+        </div>
+	</body>
+</html>
