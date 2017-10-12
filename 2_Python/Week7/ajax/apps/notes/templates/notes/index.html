@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Notes</title>
+    </head>
+    <body>
+        <div id='all_notes'>
+
+        </div>
+        <form action='/notes/add' method="post" class='ajax_form'>
+             {% csrf_token %}
+            <textarea name='text'></textarea>
+            <input type='submit' value='Add Note' />
+        </form>
+
+        <script>
+        $('.ajax_form').submit(function(e){
+            e.preventDefault()
+            console.log('yooo')
+        
+            $.ajax({
+              url: $(this).attr('action'), /* Where should this go? */
+              method: 'post', /* Which HTTP verb? */
+              data: $(this).serialize(), /* Any data to send along? */
+              success: function(serverResponse) { /* What code should we run when the server responds? */
+                $('#all_notes').html(serverResponse)
+              }
+            })
+        })
+
+        </script>
+    </body>
+</html>
