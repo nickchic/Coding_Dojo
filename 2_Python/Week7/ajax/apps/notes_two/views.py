@@ -7,13 +7,16 @@ def index(request):
     }
     return render(request, 'notes_two/index.html', context)
 
-def add(request):
-    new_note = Note_Title(title=request.POST['title'])
-    new_note.save()
+def load_notes(request):
     context = {
         'notes': Note_Title.objects.all()
     }
     return render(request, 'notes_two/all_notes.html', context)
+
+def add(request):
+    new_note = Note_Title(title=request.POST['title'])
+    new_note.save()
+    return load_notes(request)
 
 def add_text(request):
     print 'add_text'
@@ -22,5 +25,7 @@ def add_text(request):
     note_to_edit.save()
     return HttpResponse('')
 
-def delete(request):
-    return render(request, 'notes_two/all_notes.html', context)
+def delete(request, note_id):
+    note_to_delete = Note_Title.objects.get(id=note_id)
+    note_to_delete.delete()
+    return load_notes(request)

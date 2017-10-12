@@ -6,6 +6,10 @@
         <textarea name='text' class='text_{{ note.id }}'>{{ note.text }}</textarea>
         <input type='hidden' name='id' value='{{note.id}}' />
     </form>
+    <form action='/notes_two/delete/{{note.id}}' class='delete'>
+        {% csrf_token %}
+        <input type='submit' value='delete' />
+    </form>
 </div>
 
 <script>
@@ -21,3 +25,17 @@
 </script>
 
 {% endfor %}
+<script>
+$(".delete").submit(function(e){
+    console.log('grr')
+    e.preventDefault()
+    $.ajax({
+      url: $(this).attr('action'), /* Where should this go? */
+      method: 'post', /* Which HTTP verb? */
+      data: $(this).serialize(), /* Any data to send along? */
+      success: function(serverResponse) { /* What code should we run when the server responds? */
+        $('#all_notes').html(serverResponse)
+      }
+    })
+})
+</script>
