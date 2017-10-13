@@ -1,0 +1,27 @@
+{% for i in count %}
+    <a href='' id='scroll{{i}}'>{{i}}</a>
+<script>
+$("#scroll{{i}}").click(function(e){
+    e.preventDefault();
+    console.log('clicked number{{i}}');
+    $('#hidden_scroll').val({{i}});
+    search()
+})
+</script>
+{% endfor %}
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Created At</th>
+    </tr>
+    {% for lead in leads %}
+        <tr>
+            <td>{{lead.first_name}}</td>
+            <td>{{lead.last_name}}</td>
+            <td>{{lead.email}}</td>
+            <td>{{lead.created_at}}</td>
+        </tr>
+    {% endfor %}
+</table>

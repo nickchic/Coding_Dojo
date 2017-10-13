@@ -1,0 +1,32 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+#form, #table{
+    margin: 40px 50px;
+}
+
+table{
+    border-spacing: 0;
+}
+
+tr th, tr td{
+    padding: 10px 20px 10px 10px;
+    border: 1px solid #77859e;
+    margin:0;
+    height: 20px;
+}
+
+tr:nth-child(odd) {
+    background-color: #b9c8d5;
+}
+
+th {
+    background-color: #0b365b;
+    color:white;
+}
+
+form input[type='text'], form input[type='date']{
+    margin: 10px 40px 10px 2px;
+}

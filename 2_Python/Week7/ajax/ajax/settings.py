@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.pagination',
     'apps.notes',
     'apps.notes_two',
     'django.contrib.admin',

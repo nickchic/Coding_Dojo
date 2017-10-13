@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^page/', include('apps.pagination.urls')),
     url(r'^notes/', include('apps.notes.urls')),
     url(r'^notes_two/', include('apps.notes_two.urls')),
     url(r'^admin/', admin.site.urls),
