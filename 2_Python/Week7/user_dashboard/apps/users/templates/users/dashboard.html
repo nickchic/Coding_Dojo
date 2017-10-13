@@ -6,7 +6,6 @@
         {% load static %}
         <link rel="stylesheet" href="{% static 'users/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="{% static 'users/js/main.js' %}"></script>
 	</head>
 	<body>
         <div id='header'>
@@ -36,16 +35,31 @@
                 <td>{{ user.created_at }}</td>
                 <td>{% if user.admin %} Admin {% else %} Normal {% endif %}</td>
                 {% if logged_in_user.admin %}
-                    <td> <a class='show'>Remove</a> <a href='/users/edit/{{ user.id }}'>Edit</a>
+                    <td> <a class='show{{user.id}}'>Remove</a> <a href='/users/edit/{{ user.id }}'>Edit</a>
 
-                        <div class='hidden'>
+                        <div class='hidden{{user.id}}'>
                             Are you sure you want to delete {{user.first_name}} {{user.last_name}}?
                             <a href='/users/remove/{{ user.id }}'>Yes</a>
-                            <a class='hide'>No</a>
+                            <a class='hide{{user.id}}'>No</a>
                         </div>
                     </td>
                 {% endif %}
             </tr>
+            <script>
+            $('.hidden{{user.id}}').hide();
+
+            $('.show{{user.id}}').click(function(){
+
+                $('.hidden{{user.id}}').show();
+
+            });
+
+            $('.hide{{user.id}}').click(function(){
+
+                $('.hidden{{user.id}}').hide();
+
+            });
+            </script>
             {% endfor %}
         </table>
         {% if logged_in_user.admin %}
