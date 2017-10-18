@@ -28,7 +28,7 @@
             {% endif %}
             <form action='/add/review_book/' method='POST'>
                 {% csrf_token %}
-                Book title: <input type='text' name='book_title' />
+                Book title: <input type='text' name='book_title' maxlength="60"/>
                 Select an author:
                 <select name='author_select'>
                     <option value="blank"></option>
@@ -37,7 +37,7 @@
                     {% endfor %}
                 </select><br />
                 Or Type In New Author:
-                <input type='text' name='author_text' />
+                <input type='text' name='author_text' maxlength="40"/>
                 Review:
                 <input type='text' name='review_content' />
                 Rating:
