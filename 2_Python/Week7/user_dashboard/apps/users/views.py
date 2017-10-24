@@ -38,11 +38,6 @@ def register_page(request):
     return render(request, 'users/registration.html')
 
 def register_action(request):
-    if 'admin' in request.POST:
-        admin = True
-    else:
-        admin = False
-
     errors = User.objects.user_validation(request.POST)
     print 'error len', len(errors)
     if len(errors) > 0:
@@ -52,16 +47,19 @@ def register_action(request):
     else:
         new_hash = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt())
         print new_hash
-        new_user = User(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password_hash=new_hash, admin=admin)
+        new_user = User(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password_hash=new_hash, admin=False)
         new_user.save()
         request.session['id'] = new_user.id
         return redirect('/users/show/{}'.format(new_user.id))
 
 def new_user_page(request):
     logged_in_user = get_logged_in_user(request)
+    content = {
+        'logged_in':logged_in(request)
+    }
     if not logged_in_user.admin:
         return redirect('/')
-    return render(request, 'users/new_user.html')
+    return render(request, 'users/new_user.html', content)
 
 def new_user_action(request):
     if 'admin' in request.POST:
@@ -89,12 +87,16 @@ def user_page(request, user_id):
 
     context = {
         'user':this_user,
-        'logged_in':logged_in(request)
+        'logged_in':logged_in(request),
+        'wall_messages':this_user.wall_messages.all().order_by('-created_at')
     }
     return render(request, 'users/user_page.html', context)
 
 def this_user_page(request):
-    return redirect('/users/show/{}'.format(get_logged_in_user(request).id))
+    if logged_in(request):
+        return redirect('/users/show/{}'.format(get_logged_in_user(request).id))
+    else:
+        return redirect('/')
 
 def user_dashboard(request):
     logged_in_user = get_logged_in_user(request)

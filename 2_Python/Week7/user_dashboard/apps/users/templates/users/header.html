@@ -1,0 +1,16 @@
+<div id='header'>
+    <div id='header_content'>
+        <span id='logo'><a href='/users/show'>Not-Book</a></span>
+        <div id='nav'>
+            {% if logged_in %}
+            <span><a href='/dashboard'>Dashboard</a></span>
+            <span><a href='/users/show'>Home</a></span>
+            <span><a href='/users/edit'>Edit Info</a></span>
+            <span><a href='/logout'>Log Out</a></span>
+            {% else %}
+            <span><a href='/login'>Log In</a></span>
+            <span><a href='/register'>Register</a></span>
+            {% endif %}
+        </div>
+    </div>
+</div>

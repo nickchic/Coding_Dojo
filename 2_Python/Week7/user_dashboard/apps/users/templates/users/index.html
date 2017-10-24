@@ -7,19 +7,20 @@
         <link rel="stylesheet" href="{% static 'users/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
 	</head>
 	<body>
-        <div id='header'>
-            {% if logged_in %}
-            <span><a href='/dashboard'>Dashboard</a></span>
-            <span><a href='/users/show'>Home</a></span>
-            <span><a href='/users/edit'>Edit Info</a></span>
-            <span><a href='/logout'>Log Out</a></span>
-            {% else %}
-            <span><a href='/login'>Log In</a></span>
-            <span><a href='/register'>Register</a></span>
-            {% endif %}
-        </div>
-        <div id='home_content'>
-            <p>Welcome to Facebook super-duper light extreme edition!</p>
+        {% include "users/header.html" %}
+        <div id='bg'>
+            <div id='content'>
+                <h1>Welcome to Not-Book!</h1>
+                <p>Welcome to Not-Book! A bare-bones messaging website coded and designed from scratch by Nicholas Chicirda. This site uses Django and MySQL. To see the rest of Nick’s work and information go to <a href='http://www.nickchic.com'>nickchic.com</a>.</p>
+                <div class='half'>
+                    <h3>Register</h3>
+                    {% include "users/reg_form.html" %}
+                </div>
+                <div class='half'>
+                    <h3>Log In</h3>
+                    {% include "users/login_form.html" %}
+                </div>
+            </div>
         </div>
 	</body>
 </html>

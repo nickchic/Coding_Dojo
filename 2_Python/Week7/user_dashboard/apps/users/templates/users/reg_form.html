@@ -1,0 +1,14 @@
+<form action='/register_action' method='POST'>
+    {% csrf_token %}
+    <span>First Name:</span>
+    <input type='text' name='first_name' />
+    <span>Last Name:</span>
+    <input type='text' name='last_name' />
+    <span>Email:</span>
+    <input type='text' name='email' />
+    <span>Password:</span>
+    <input type='password' name='password' />
+    <span>Confirm:</span>
+    <input type='password' name='confirm' />
+    <input type='submit' value='Register' />
+</form>
