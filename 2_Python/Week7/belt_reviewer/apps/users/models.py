@@ -52,18 +52,3 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
-
-
-class Book(models.Model):
-    title = models.CharField(max_length=60)
-    author = models.CharField(max_length=40)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class Review(models.Model):
-    content = models.TextField()
-    reviewer = models.ForeignKey(User, related_name="reviews")
-    book = models.ForeignKey(Book, related_name="reviews")
-    rating = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)

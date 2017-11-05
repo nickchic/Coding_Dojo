@@ -2,3 +2,4 @@
 .DS_Store?
 .bash_profile.save
 .bash_profile.save.1
+/aws
