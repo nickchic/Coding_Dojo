@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+        $(document). ready(function (){
+            var socket  = io.connect();
+
+            socket.on( 'number_update', function (data){
+                $('#results').html('The button has been pushed '+ data.clicks +' times');
+            });
+
+            $('#epic').click(function(){
+                socket.emit('button_click')
+            })
+
+            $('#reset').click(function(){
+                socket.emit('reset_number')
+            })
+
+        })
+        </script>
+    </head>
+    <body>
+        <p id='results'>The button has been pushed <%= clicks %> times</p>
+        <button id='epic'>EPIC BUTTON</button>
+        <button id='reset'>Reset</button>
+    </body>
+</html>

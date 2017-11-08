@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Group Chat</title>
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+        $(document). ready(function (){
+            var socket  = io.connect();
+            $('#chat').hide();
+
+            socket.on( 'show_chat', function (data){
+                $('#chat').show();
+                $('#login').hide();
+            });
+
+            socket.on( 'message_update_all', function (data){
+                console.log('update messages')
+                $('#display').html('');
+                for(let i = 0; i < data.messages.length; i++){
+                    console.log(data.messages[i].name);
+                    $('#display').append("<p>" + data.messages[i].name + ": " + data.messages[i].content + "</p>");
+                }
+            });
+
+            socket.on( 'message_update', function (data){
+                console.log('add 1 message')
+                console.log(data.message.name);
+                $('#display').append("<p>" + data.message.name + ": " + data.message.content + "</p>");
+
+            });
+
+            $('#login_form').submit(function(){
+                event.preventDefault();
+                socket.emit('login', {
+                    name:$("input[name='name']").val(),
+                    id:<%=id%>
+                });
+            })
+
+            $('#chat_form').submit(function(){
+                event.preventDefault();
+                console.log(<%= id %>);
+                socket.emit('new_message', {
+                    id:<%= id %>, content:$("input[name='message']").val()
+                });
+                $("input[name='message']").val('')
+            })
+
+
+
+        })
+        </script>
+    </head>
+    <body>
+        <div id='login'>
+            <p>Choose a name to chat</p>
+            <%= id %>
+            <form id='login_form'>
+                <input type="text" name="name">
+                <input type="submit">
+            </form>
+        </div>
+        <div id='chat'>
+            <div id='display'>
+
+            </div>
+            <p>Type a message!</p>
+            <form id='chat_form'>
+                <input type="text" name="message">
+                <input type="submit">
+            </form>
+        </div>
+    </body>
+</html>

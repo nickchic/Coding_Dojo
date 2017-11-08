@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+        $(document). ready(function (){
+
+           var socket  = io.connect();
+           $( 'button').click(function (){
+               socket.emit( "button_clicked", {reason:  "because I want to learn about sockets!"});
+            });
+            socket.on( 'server_response', function (data){
+               console.log( 'The server says: '  + data.response);
+            });
+
+       })
+        </script>
+    </head>
+    <body>
+        <button>I AM A BUTTON!</button>
+    </body>
+</html>

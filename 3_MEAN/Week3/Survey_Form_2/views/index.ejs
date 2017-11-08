@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+        $(document). ready(function (){
+
+           var socket  = io.connect();
+           $('#form').submit(function (){
+               event.preventDefault();
+               console.log();
+               socket.emit( "form_submitted", {
+                   name:  $( "input[name='name']" ).val(),
+                   dojo:  $( "select[name='dojo']" ).val(),
+                   language:  $( "select[name='language']" ).val(),
+                   comment:  $( "textarea[name='comment']" ).val(),
+               });
+            });
+
+            socket.on( 'returned_number', function (data){
+                $( "#results" ).html( "<p>You submited name: " + data.name + ", dojo: " + data.dojo + ", language: " + data.language + ", comment: " + data.comment + " server responded " + data.num + "</p>" );
+            });
+
+        })
+        </script>
+    </head>
+    <body>
+        <p id='results'></p>
+        <form id='form' action="/result" method="post">
+            <p>Name</p>
+            <input type="text" name="name">
+            <p>Dojo Location</p>
+            <select name='dojo'>
+                <option>New York</option>
+                <option>Philadelphia</option>
+                <option>Seattle</option>
+                <option>The Moon</option>
+            </select>
+            <p>Favorite Language</p>
+            <select name='language'>
+                <option>JavaScript</option>
+                <option>C#</option>
+                <option>Python</option>
+                <option>HTML</option>
+            </select>
+            <p>Comment</p>
+            <textarea name='comment'></textarea>
+            <br />
+            <input type="submit" >
+        </form>
+    </body>
+</html>
