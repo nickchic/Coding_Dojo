@@ -4,15 +4,15 @@
         <meta charset="utf-8" />
 		<title></title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'users/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="{% static 'books/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
 	</head>
 	<body>
         <div id='header'>
             {% if logged_in %}
-            <span><a href='/books'>Books</a></span>
-            <span><a href='/users/home'>Home</a></span>
-            <span><a href='/add'>Add Book / Review</a></span>
-            <span><a href='/logout'>Log Out</a></span>
+            <span><a href='/book'>Books</a></span>
+            <span><a href='/book/users/home'>Home</a></span>
+            <span><a href='/book/add'>Add Book / Review</a></span>
+            <span><a href='/book/logout'>Log Out</a></span>
             {% else %}
             <span><a href='/'>Log In</a></span>
             <span><a href='/'>Register</a></span>
@@ -26,7 +26,7 @@
                 {% endfor %}
                 </div>
             {% endif %}
-            <form action='/add/review_book/' method='POST'>
+            <form action='/book/add/review_book/' method='POST'>
                 {% csrf_token %}
                 Book title: <input type='text' name='book_title' maxlength="60"/>
                 Select an author:

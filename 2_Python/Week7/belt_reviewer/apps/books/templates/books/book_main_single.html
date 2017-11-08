@@ -4,15 +4,15 @@
         <meta charset="utf-8" />
 		<title></title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'users/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="{% static 'books/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
 	</head>
 	<body>
         <div id='header'>
             {% if logged_in %}
-            <span><a href='/books'>Books</a></span>
-            <span><a href='/users/home'>Home</a></span>
-            <span><a href='/add'>Add Book / Review</a></span>
-            <span><a href='/logout'>Log Out</a></span>
+            <span><a href='/book'>Books</a></span>
+            <span><a href='/book/users/home'>Home</a></span>
+            <span><a href='/book/add'>Add Book / Review</a></span>
+            <span><a href='/book/logout'>Log Out</a></span>
             {% else %}
             <span><a href='/'>Log In</a></span>
             <span><a href='/'>Register</a></span>
@@ -28,7 +28,7 @@
             {% for review in book.reviews.all %}
                 <div class='single_reviews'>
                     <p class='rating'>Rating {{ review.rating }}/5</p>
-                    <p class='name'><a href='/users/{{review.reviewer.id}}'>{{ review.reviewer.first_name }}</a> says:</p>
+                    <p class='name'><a href='/book/users/{{review.reviewer.id}}'>{{ review.reviewer.first_name }}</a> says:</p>
                     <p class='content'>{{ review.content }}</p>
                     <p class='date'>Posted: {{ review.created_at }}</p>
                 </div>
@@ -44,7 +44,7 @@
                     {% endfor %}
                     </div>
                 {% endif %}
-                <form action='/add/review/{{ book.id }}' method='POST'>
+                <form action='/book/add/review/{{ book.id }}' method='POST'>
                     {% csrf_token %}
                     <input type='text' name='content' />
                     <select name='rating'>
